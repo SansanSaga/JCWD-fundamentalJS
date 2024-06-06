@@ -1,0 +1,8 @@
+/*
+Make sure to be in the folder of interest
+git init
+git add .
+git commit -m "Comment"
+git remote add origin `site` << from repository
+git push origin main
+*/
