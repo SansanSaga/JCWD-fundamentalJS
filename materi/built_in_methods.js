@@ -165,3 +165,111 @@ const filterResult = ages.filter((age, index) => {
 });
 
 console.log(filterResult);
+
+/*
+    String built-in methods
+    // slice
+
+    // substring
+
+    // substr
+
+    // replace
+
+    // toUpperCase
+
+    // toLowerCase
+
+    // concat
+
+    // trim
+
+    // padStart
+
+    // padEnd
+
+    // charAt
+
+    // charCodeAt
+
+    // split
+
+    // indexOf
+
+    // lastIndexOf
+
+    // search
+*/
+
+/*
+    Number built-in methods
+    // toString
+
+    // toExponential
+
+    // toFixed
+
+    // toPrecision
+
+    // valueOf
+
+    ==========Global built-in method & property==========
+    // Number
+    
+    // parseInt
+
+    // parseFloat
+
+    // MAX_VALUE
+
+    // MIN_VALUE
+
+    // POSITIVE_INFINITY
+
+    // NEGATIVE_INFINITY
+
+    // NaN
+*/
+
+/*
+    Date built-in methods
+    // getFullYear
+
+    // getMonth
+
+    // getDate
+
+    // getHours
+
+    // getMinutes
+
+    // getSeconds
+
+    // getMilliseconds
+
+    // getTime
+
+    // getDay
+
+    // Date.now
+
+    // Date.parse
+
+    ==========SET==========
+
+    // setFullYear
+
+    // setMonth
+
+    // setDate
+
+    // setHours
+
+    // setMinutes
+
+    // setSeconds
+
+    // setMilliseconds
+
+    // setTime
+*/
