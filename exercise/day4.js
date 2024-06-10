@@ -15,6 +15,28 @@ function triangle (height) {
     }
 }
 
+// Dengan row, supaya lebih sepadan, tapi manual
+
+segitiga2(5);
+
+function segitiga2(height) {
+    let currentNumber = 1;
+
+    for (let i = 1; i <= height; i++) {
+        let row = "";
+
+        for (let j = 1; j <= i; j++) {
+            row += (currentNumber < 10 ? "0" : "") + currentNumber + " ";
+            currentNumber++;
+        }
+        console.log(row);
+    }
+}
+
+// Atau dengan pad
+
+;
+
 // 2. Create a function that can loop the number of times according to the input we provide, and will
 //    replace multiples of 3 with "Fizz", multiples of 5 with "Buzz", and multiple of 3 and 5 with
 //    "FizzBuzz".
@@ -71,12 +93,16 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const result4 = evenNum(arr);
 
+result42 = even4(arr);
+
 console.log(result4);
+
+console.log(result42);
 
 function evenNum(array) {
     let tempArr = [];
     for (let i = 0; i < array.length; i++) {
-        if (array[i] % 2 == 0) {
+        if (array[i] % 2 === 0) {
             tempArr.push(array[i]);
         }
     }
@@ -84,8 +110,23 @@ function evenNum(array) {
 }
 
 /////////////// Other ways
+/////////////// Don't know how js assign memory; might not be a good idea to do.
 
-//
+function even4(array) {
+    let tempArr = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) {
+            tempArr[tempArr.length] = array[i];
+        }
+    }
+    return tempArr;
+}
+
+/////////////// Using filter
+
+const arrFilter = arr.filter(arr => arr % 2 === 0);
+
+console.log(arrFilter);
 
 // 5. Write a function to split a string and convert it into an array of words
 
@@ -99,8 +140,54 @@ function splitter(str) {
     return str.split(" ");
 }
 
-////////////// Other ways
+////////////// Other ways, without built-in method
+
+const arraySplit = split2(str5);
+
+console.log(arraySplit);
 
 function split2(str) {
     let arr = [];
+    let string = "";
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] != " ") {
+            string += str[i];
+        } else {
+            arr[arr.length] = string;
+            string = "";
+        }
+
+        if (i == (str.length - 1) && str[i] != " ") {
+            arr[arr.length] = string;
+        }
+    }
+    return arr;
 }
+
+// 
+
+const splitString2 = (input) => {
+    let kata = [];
+    let tmpStr = "";
+
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] === " ") {
+            kata.push(tmpStr);
+            tmpStr = "";
+            continue;
+        }
+
+        tmpStr += input[i];
+    }
+
+    if (input[input.length - 1] != " ") {
+        kata.push(tmpStr);
+        return kata
+    }
+
+    return kata;
+};
+
+const arr5 = splitString2(str5);
+
+console.log(arr5);

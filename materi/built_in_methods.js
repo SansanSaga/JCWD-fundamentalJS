@@ -44,6 +44,18 @@
     // FILTER
     Melakukan looping pada array dan mereturn array baru berdasarkan kondisi pada return function
     yang dimasukkan ke filter parantheses
+
+    // FIND
+    Mencari value yang ditemukan pertama kali dalam array
+
+    // FINDINDEX
+    Sama dengan find, tapi menghasilkan index dari value di dalam array tersebut
+
+    // REDUCE
+    Biasa digunakan untuk melakukan operasi aritmetika pada tiap isi array
+
+    // INCLUDES
+    Mengecek apakah ada value tertentu di dalam array, hasil returnnya adalah boolean
 */
 
 // JOIN
@@ -164,7 +176,35 @@ const filterResult = ages.filter((age, index) => {
     return age > 20;
 });
 
+const filterTest = ages.filter(age => age > 20)
+
+console.log(filterTest);
+
 console.log(filterResult);
+
+// FIND
+const ages2 = [3, 10, 20, 19];
+
+const findResult = ages2.find(age => age > 18);
+
+console.log(findResult);
+
+// FINDINDEX
+const findIndexResult = ages2.findIndex(age => age > 18);
+
+console.log(findIndexResult);
+
+// REDUCE
+const numReduce = [175, 50, 25];
+
+const resultReduce = numReduce.reduce((a,b) => a + b);
+
+console.log(resultReduce);
+
+// INCLUDES
+const fruitInc = ["Banana", "Orange", "Apple"];
+
+console.log(fruitInc.includes("Banana"));
 
 /*
     String built-in methods
