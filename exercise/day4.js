@@ -182,7 +182,6 @@ const splitString2 = (input) => {
 
     if (input[input.length - 1] != " ") {
         kata.push(tmpStr);
-        return kata
     }
 
     return kata;
