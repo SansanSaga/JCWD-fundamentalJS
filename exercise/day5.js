@@ -77,9 +77,14 @@ function sort(arr) {
 const arr2 = ["Apple", "Banana", "Cherry", "Date"];
 
 console.log(conc(arr2));
+console.log(conc2(arr2));
 
 function conc(arr) {
     let str = "";
+
+    if (arr.length < 2) {
+        return arr;
+    }
 
     for (let i = 0; i < arr.length; i++) {
         if (i === arr.length - 1) {
@@ -90,6 +95,18 @@ function conc(arr) {
     }
 
     return str;
+}
+
+// Using join
+function conc2(arr) {
+    if (arr.length < 2) {
+        return arr;
+    }
+
+    let last = arr.pop();
+    for (let i = 0; i < arr.length; i++) {
+        return arr.join(", ") + ", and " + last;
+    }
 }
 
 // 3. Write a function to split a string and convert it into an array of words
@@ -140,6 +157,23 @@ function sumNum(arr1, arr2) {
     }
 
     return arr3;
+}
+
+// Apabila panjang array berbeda
+
+const arr43 = [1, 2, 3, 4];
+
+console.log(sumNum2(arr43, arr42));
+
+function sumNum2(arr1, arr2) {
+    const result = [];
+    const maxLength = Math.max(arr1.length, arr2.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+        result[i] = (arr1[i] || 0) + (arr2[i] || 0);
+    }
+
+    return result;
 }
 
 // 5. Write a function that adds an element to the end of an array. However, the element should only
@@ -193,7 +227,7 @@ const maxSize = 6;
 
 console.log(maxArray(maxSize, 5, 10, 24, 3, 6, 7, 8));
 console.log(maxArray2(maxSize, 5, 10, 24, 3, 6, 7, 8));
-
+console.log(limitData(maxSize, 5, 10, 24, 3, 6, 7, 8));
 
 function maxArray(num, ...manyMoreArgs) {
     let arr = [];
@@ -212,6 +246,21 @@ function maxArray2(num, ...manyMoreArgs) {
     return newArray;
 }
 
+// Other way
+function limitData(max, ...integers) {
+    const array = [];
+
+    integers.forEach(num => {
+        if (array.length === max) {
+            return;
+        } else {
+            array.push(num);
+        }
+    });
+
+    return array;
+}
+
 // 8. Write a function that will combine 2 given array into one array
 
 const arr81 = [1, 2, 3];
@@ -219,10 +268,13 @@ const arr82 = [4, 5, 6];
 
 console.log(combine(arr81, arr82));
 console.log(combine2(arr81, arr82));
+console.log(combineArray(arr81, arr82));
 
 function combine(arr1, arr2) {
     return arr81.concat(arr82);
 }
+
+// tanpa concat
 
 function combine2(arr1, arr2) {
     for (let i = 0; i < arr2.length; i++) {
@@ -232,10 +284,17 @@ function combine2(arr1, arr2) {
     return arr1;
 }
 
+// Dengan sprite operator
+
+function combineArray(arr1, arr2) {
+    return [...arr1, ...arr2];
+}
+
 // 9. Write a function to find duplicate values in an array 
 const arr91 = [1, 2, 2, 2, 3, 3, 4, 5, 5];
 
 console.log(dupe(arr91));
+console.log(findDupe2(arr91));
 
 function dupe(arr) {
     let arrDupe = [];
@@ -252,11 +311,37 @@ function dupe(arr) {
     return arrDupe;
 }
 
+// Other way
+function findDupe(arr) {
+    const countObj = {};
+    const duplicate = [];
+
+    
+}
+
+// Using set
+function findDupe2(arr) {
+    const seen = new Set(); //Set punya beberapa methode yang berguna
+    const duplicate = [];
+
+    for (const value of arr) {
+
+        if (seen.has(value) && !duplicate.includes(value)) {
+            duplicate.push(value);
+        } else {
+            seen.add(value);
+        }  
+    }
+
+    return duplicate;
+}
+
 // 10. Write a function to find the differences in 2 given array
 const arr101 = [1, 2, 3, 4, 5];
 const arr102 = [3, 4, 5, 6, 7];
 
 console.log(diff(arr101, arr102));
+console.log(findDiff(arr101, arr102));
 
 // function diff(arr1, arr2) {
 //     return arr1.filter(num => {
@@ -286,6 +371,25 @@ function diff(arr1, arr2) {
     return arrDiff;
 }
 
+// other way
+function findDiff(arr1, arr2) {
+    const differences = [];
+
+    for (const item of arr1) {
+        if (!arr2.includes(item) && !differences.includes(item)) {
+            differences.push(item);
+        }
+    }
+
+    for (const item of arr2) {
+        if (!arr1.includes(item) && !differences.includes(item)) {
+            differences.push(item);
+        }
+    }
+
+    return differences;
+}
+
 // 11. Based on the array below write a function that will return primitive data types only.
 const arr111 = [1, [], undefined, {}, "String", {}, []];
 
@@ -295,7 +399,8 @@ console.log(prim(arr111));
 
 function prim(arr) {
     return arr.filter(type => {
-        if (typeof type != "object" && typeof type != "function") {
+        if (type === null || (typeof type != "object" && typeof type != "function")) {
+            console.log(type);
             return type;
         }
     });
@@ -305,6 +410,7 @@ function prim(arr) {
 const arr121 = [5, 3, 1, 7, 2, 6];
 
 console.log(secondSmallest(arr121));
+console.log(secondSmallest2(arr121));
 
 function secondSmallest(arr) {
     arr.sort((a, b) => a - b);
@@ -318,10 +424,21 @@ function secondSmallest(arr) {
     return arr[0];
 }
 
+// If there are no duplicate
+
+function secondSmallest2(arr) {
+    if (arr.length < 2) {
+        return "Minimum array length harus 2";
+    }
+
+    return arr.sort((a, b) => a - b)[1];
+}
+
 // 13. Write a function from a given array of mixed data types and return the sum of all the number
 const arr131 = ["3", 1, "String", null, false, undefined, 2];
 
 console.log(sumOfNumber(arr131));
+console.log(sumOfNumber2(arr131));
 
 function sumOfNumber(arr) {
     let sum = 0;
@@ -335,25 +452,73 @@ function sumOfNumber(arr) {
     return sum;
 }
 
+// simpler
+
+function sumOfNumber2(arr) {
+    let sum = 0;
+
+    arr.forEach(num => {
+        if (typeof num === "number") {
+            sum += num;
+        }
+    });
+
+    return sum;
+}
+
 // 14. Write a function from the below array of number that will return sum of duplicate values.
 const arr141 = [10, 20, 40, 10, 50, 30, 10, 60, 10];
 
+console.log(dupeSum(arr141));
+
 function dupeSum(arr) {
     let dupe = [];
+    let sum = 0;
     arr.sort((a, b) => a - b);
 
-    for (let i = 0; i < arr.length; i++) {
-
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (!dupe.includes(arr[i])) {
+            if (arr[i] === arr[i + 1]) {
+                dupe.push(arr[i]);
+            }
+        }
     }
+    
+    arr141.forEach(num => {
+        if (dupe.includes(num)) {
+            sum += num;
+        }
+    });
+    
+    return sum;
+}
+
+// other way
+function sumDuplicateValues(arr) {
+    const duplicateValue = arr.filter((value, index, self) => {
+        return self.indexOf(value) !== index;
+    });
+
+    let result = 0;
+
+    for (const item of arr) {
+        if (duplicateValue.includes(item)) {
+            result += item;
+        }
+    }
+
+    return result;
 }
 
 // 15. Write a game of rock, paper, scissor function that will return 'Win' or 'Lose'. The function 
 //     will randomly pick between rock, paper, or scissor.
 
-const randomizer = Math.floor(Math.random() * 3);
+const randomizer = Math.floor(Math.random() * 2.99);
 
-const stringPlayer = "Rock".toLowerCase();
+const stringPlayer = "scissor".toLowerCase();
 const stringCom = stringComp(randomizer);
+
+playRPS(stringPlayer, stringCom);
 
 function stringComp(num) {
     if (num === 0) {
@@ -366,5 +531,39 @@ function stringComp(num) {
 }
 
 function playRPS(player, com) {
-    
+    if (player === com) {
+        console.log(outLine(player, com) + `It was a draw!`);
+    } else {
+        switch (player) {
+            case "rock":
+                if (com === "paper") {
+                    console.log(outLine(player, com) + `Com wins!`);
+                    break;
+                } else if (com === "scissor") {
+                    console.log(`You pick ${player}.\nCom pick ${com}.\nYou wins!`);
+                    break;
+                }
+            case "paper":
+                if (com === "scissor") {
+                    console.log(`You pick ${player}.\nCom pick ${com}.\nCom wins!`);
+                    break;
+                } else if (com === "rock") {
+                    console.log(`You pick ${player}.\nCom pick ${com}.\nYou wins!`);
+                    break;
+                }
+            case "scissor":
+                if (com === "rock") {
+                    console.log(`You pick ${player}.\nCom pick ${com}.\nCom wins!`);
+                    break;
+                } else if (com === "paper") {
+                    console.log(`You pick ${player}.\nCom pick ${com}.\nYou wins!`);
+                    break;
+                }
+        }
+    }
+    function outLine(player, com) {
+        return `You pick ${player}.\nCom pick ${com}.\n`
+    }
 }
+
+// Dengan menggunakan object

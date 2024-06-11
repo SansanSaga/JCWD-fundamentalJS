@@ -170,9 +170,10 @@ const mapResult = fruits2.map((fruit, idx) => {
 console.log(mapResult);
 
 // FILTER
+// self adalah value keseluruhan isi array, dia juga bisa di operasikan tiap looping
 const ages = [32, 30, 21, 12, 40];
 
-const filterResult = ages.filter((age, index) => {
+const filterResult = ages.filter((age, index, self) => {
     return age > 20;
 });
 
