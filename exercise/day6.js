@@ -85,22 +85,31 @@ function ex1(arr) {
 // Exercise 2
 // Create a program to create transaction
 class Product {
-    constructor(nama, price) {
+    constructor(nama, price, qty = 0) {
         this.nama = nama;
         this.price = price;
+        this.qty = qty;
     }
 }
 
 class Transaction extends Product {
-    constructor(total, nama, price, qty) {
+    constructor(nama = 0, price = 0) {
         super(nama, price);
-        this.total = total;
-        this.quantity = qty;
+        this.total = 0;
+        this.data = [];
     }
 
     addToCart(produk, jum) {
-        if (this.nama === produk) {
-            this.qty += jum;
+        let check = true;
+
+        this.data.forEach(barang => {
+            if (barang.nama === produk.nama) {
+                barang.qty += jum;
+                check = false;
+            }
+        })
+        if (check === true) {
+            this.data.push(produk);
         }
     }
 
@@ -113,11 +122,9 @@ class Transaction extends Product {
     }
 }
 
-const ayamGoreng = new Product("ayam", 9000);
-const nasiTelur = new Product("nastel", 8000);
-
 const test = new Transaction();
+const nastel = new Product("Nasi telur", 8000)
 
-test.addToCart("ayam", 2);
+test.addToCart(nastel,3);
 
 console.log(test);

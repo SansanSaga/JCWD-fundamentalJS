@@ -57,6 +57,9 @@ console.log(Object.keys(person2));
 console.log(Object.values(person2));
 
 // For in
+// For in ketika mengakses value, juga akan secara otomatis mengakses keynya
+// Dan ketika kita mengassign misal person2[key] ke sebuah variabel, maka yang diassign tidak hanya
+// value isinya, tetapi juga keynya, sehingga yang di assign juga merupakan object itu sendiri
 
 for (const key in person2) {
     console.log(key);
