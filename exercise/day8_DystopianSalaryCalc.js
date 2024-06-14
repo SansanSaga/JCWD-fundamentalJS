@@ -12,11 +12,19 @@ class Employee {
 
     getSalary() {
         if (this.workHour > 6) {
-            this.totalSalary = this.overSalary * this.workHour;
+            this.totalSalary = this.formatCurrency(this.overSalary * this.workHour);
         } else {
-            this.totalSalary = this.salary * this.workHour;
+            this.totalSalary = this.formatCurrency(this.salary * this.workHour);
         }
         console.log(this.totalSalary);
+    }
+
+    formatCurrency(money) {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            maximumFractionDigits: 0,
+        }).format(money);
     }
 }
 

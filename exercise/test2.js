@@ -1,7 +1,13 @@
-let tester = Math.random() * 2;
+let tester = "09122124aaaaa12";
 
+console.log(tester.length);
 
-while (true) {
-    tester = Math.random() * 2;
-    console.log(tester);
+const num = Number(tester);
+
+console.log(num);
+
+if (isNaN(num)) {
+    console.log("halo");
 }
+
+console.log((typeof(num)));

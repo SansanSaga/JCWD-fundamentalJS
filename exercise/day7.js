@@ -85,6 +85,7 @@ const studentData2 = [
 ];
 
 combine(studentData1, studentData2);
+removeAndCombine(studentData1, studentData2);
 
 function combine(arr1, arr2) {
     const arr3 = [];
@@ -104,6 +105,18 @@ function combine(arr1, arr2) {
     console.log(arr3);
 }
 
+function removeAndCombine(arr1, arr2) {
+    const combineArray = [...arr1, ...arr2];
+
+    const temp = [];
+
+    for (let i = 0; i < combineArray.length; i++) {
+        const duplicateValues = temp.filter((val) => {
+            return val.email === combineArray[i].length;
+        });
+    }
+}
+
 // 4. Create a function that can accept input as an array of objects and switch all values into 
 //    property and property into values
 
@@ -118,7 +131,8 @@ function switchObj(arr) {
         for (const isi in obj) {
             console.log(isi);
             console.log(obj[isi]);
-            reverse = isi;
+            let holder = obj[isi];
+            reverse[holder] = isi;
             console.log(reverse);
         }
     });
@@ -133,6 +147,24 @@ function switchVar(arr, keys) {
     });
     return objectArray;
 }
+
+const switchKeyToValues = (data) => {
+    const result = [];
+
+    data.forEach((item) => {
+        let temp = {};
+
+        for (let key in item) {
+            temp[item[key]] = key;
+        }
+
+        result.push(temp);
+    });
+
+    return result;
+};
+
+switchKeyToValues(arrSwitch);
 
 // 5. Create a function to find a factorial number using recursion
 
